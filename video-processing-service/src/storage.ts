@@ -46,14 +46,14 @@ export function convertVideo(rawVideoName: string, processedVideoName: string) {
 
 /**
  * @param fileName - The name of the file to download from the 
- * {@link rawVideoBucketName} bucket into the {@link localProcessedVideoPath} folder.
+ * {@link rawVideoBucketName} bucket into the {@link localRawVideoPath} folder.
  * @returns A promise that resolves when the file has been downloaded.
 */
 
 export async function downloadRawVideo(fileName: string) {
     await storage.bucket(rawVideoBucketName)
         .file(fileName)
-        .download({destination: `${localProcessedVideoPath}/${fileName}`});
+        .download({destination: `${localRawVideoPath}/${fileName}`});
 
     console.log(
         `gs://${rawVideoBucketName}/${fileName} downloaded to ${localProcessedVideoPath}/${fileName}.`
